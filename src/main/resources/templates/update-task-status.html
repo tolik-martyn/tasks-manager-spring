@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Task Status</title>
+</head>
+<body>
+<h1>Update Task Status</h1>
+<form action="#" method="post" th:action="@{'/tasks/' + ${taskId} + '/update-status'}">
+    <label>
+        <select name="status">
+            <option th:each="status : ${statuses}"
+                    th:value="${status}"
+                    th:text="${#strings.capitalize(status.toString().toLowerCase().replace('_', ' '))}"
+                    th:selected="${status == currentStatus}"></option>
+        </select>
+    </label>
+    <button type="submit">Update Status</button>
+</form>
+</body>
+</html>

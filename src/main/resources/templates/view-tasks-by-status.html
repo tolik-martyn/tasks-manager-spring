@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks By Status</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h1>Tasks By Status: <span th:text="${status}"></span></h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Created At</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="task : ${tasks}">
+        <td th:text="${task.id}"></td>
+        <td th:text="${task.description}"></td>
+        <td>
+            <a th:href="@{'/tasks/' + ${task.id} + '/update-status'}">
+                <span th:text="${#strings.capitalizeWords(task.status.toString().toLowerCase().replace('_', ' '))}"></span>
+            </a>
+        </td>
+        <td th:text="${formatter.format(task.createdAt)}"></td>
+        <td>
+            <form th:action="@{/tasks/{taskId}/delete(taskId=${task.id})}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <form action="/tasks/add" style="margin-top: 10px;">
+        <button type="submit" class="btn btn-primary">Add New Task</button>
+    </form>
+    <form action="/tasks/all" style="margin-top: 10px;">
+        <button type="submit" class="btn btn-info">All Tasks</button>
+    </form>
+</div>
+</body>
+</html>
