@@ -14,11 +14,13 @@ import java.util.List;
 public class TaskController {
 
     private final TaskService taskService;
+    private final ExecutorService executorService;
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     @Autowired
-    public TaskController(TaskService taskService) {
+    public TaskController(TaskService taskService, ExecutorService executorService) {
         this.taskService = taskService;
+        this.executorService = executorService;
     }
 
     @GetMapping("/all")
@@ -74,6 +76,23 @@ public class TaskController {
     @PostMapping("/{taskId}/delete")
     public String deleteTask(@PathVariable("taskId") Long taskId) {
         taskService.deleteTask(taskId);
+        return "redirect:/tasks/all";
+    }
+
+    @PostMapping("/{taskId}/add-executor")
+    public String addExecutorToTask(@PathVariable("taskId") Long taskId, Model model) {
+        Task task = taskService.getTaskById(taskId);
+        model.addAttribute("task", task);
+        model.addAttribute("executors", executorService.getAllExecutors());
+        return "add-executor-to-task";
+    }
+
+    @PostMapping("/{taskId}/assign-executor")
+    public String assignExecutorToTask(@PathVariable("taskId") Long taskId, @RequestParam("executorId") Long executorId) {
+        Task task = taskService.getTaskById(taskId);
+        Executor executor = executorService.getExecutorById(executorId);
+        task.getExecutors().add(executor);
+        // taskService.updateTask(task); // Обновляем задачу в БД
         return "redirect:/tasks/all";
     }
 }

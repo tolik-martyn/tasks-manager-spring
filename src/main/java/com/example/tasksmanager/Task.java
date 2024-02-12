@@ -4,6 +4,8 @@ package com.example.tasksmanager;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "tasks")
@@ -20,6 +22,14 @@ public class Task {
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+
+    @ManyToMany
+    @JoinTable(
+            name = "task_executors",
+            joinColumns = @JoinColumn(name = "task_id"),
+            inverseJoinColumns = @JoinColumn(name = "executor_id")
+    )
+    private Set<Executor> executors = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -51,5 +61,13 @@ public class Task {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Set<Executor> getExecutors() {
+        return executors;
+    }
+
+    public void setExecutors(Set<Executor> executors) {
+        this.executors = executors;
     }
 }

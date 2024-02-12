@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Executor</title>
+</head>
+<body>
+<h1>Update Executor</h1>
+<form action="#" method="post" th:action="@{'/executors/' + ${executor.id} + '/update'}">
+    <label>First Name: <input type="text" th:field="*{executor.firstName}"/></label><br/>
+    <label>Last Name: <input type="text" th:field="*{executor.lastName}"/></label><br/>
+    <button type="submit">Update Executor</button>
+</form>
+</body>
+</html>

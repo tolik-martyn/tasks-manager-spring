@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Executor</title>
+</head>
+<body>
+<h1>Add Executor</h1>
+<form action="/executors/add" method="post" th:object="${executor}">
+    <label>First Name: <input type="text" th:field="*{firstName}"/></label><br/>
+    <label>Last Name: <input type="text" th:field="*{lastName}"/></label><br/>
+    <button type="submit">Add Executor</button>
+</form>
+</body>
+</html>

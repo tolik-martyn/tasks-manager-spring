@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Executors</title>
+</head>
+<body>
+<h1>All Executors</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="executor : ${executors}">
+        <td th:text="${executor.id}"></td>
+        <td th:text="${executor.firstName}"></td>
+        <td th:text="${executor.lastName}"></td>
+        <td>
+            <a th:href="@{'/executors/' + ${executor.id} + '/update'}">Update</a> |
+            <a th:href="@{'/executors/' + ${executor.id} + '/delete'}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <form action="/executors/add" style="margin-top: 10px;">
+        <button type="submit">Add New Executor</button>
+    </form>
+</div>
+</body>
+</html>

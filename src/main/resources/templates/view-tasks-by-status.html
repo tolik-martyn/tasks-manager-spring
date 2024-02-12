@@ -27,6 +27,7 @@
         <th>ID</th>
         <th>Description</th>
         <th>Status</th>
+        <th>Executors</th>
         <th>Created At</th>
         <th>Delete</th>
     </tr>
@@ -40,9 +41,19 @@
                 <span th:text="${#strings.capitalizeWords(task.status.toString().toLowerCase().replace('_', ' '))}"></span>
             </a>
         </td>
+        <td>
+            <ul>
+                <li th:each="executor : ${task.executors}"
+                    th:text="${executor.firstName + ' ' + executor.lastName}"></li>
+                <li th:if="${#lists.isEmpty(task.executors)}">No Assigned Executor</li>
+            </ul>
+            <form action="@{/tasks/${task.id}/add-executor}" method="post">
+                <button type="submit">Add Executor</button>
+            </form>
+        </td>
         <td th:text="${formatter.format(task.createdAt)}"></td>
         <td>
-            <form th:action="@{/tasks/{taskId}/delete(taskId=${task.id})}" method="post">
+            <form th:action="@{/tasks/{taskId}/delete(taskId=${task.id})}">
                 <button type="submit">Delete</button>
             </form>
         </td>
