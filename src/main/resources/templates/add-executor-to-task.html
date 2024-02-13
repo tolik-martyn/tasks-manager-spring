@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Add Executor to Task</h1>
-<form th:action="@{/tasks/${task.id}/assign-executor}" method="post">
+<form th:action="@{/tasks/{taskId}/assign-executor(taskId=${task.id})}" method="post">
     <input type="hidden" name="taskId" th:value="${task.id}"/>
     <label for="executorId">Select Executor:</label>
     <select name="executorId" id="executorId">

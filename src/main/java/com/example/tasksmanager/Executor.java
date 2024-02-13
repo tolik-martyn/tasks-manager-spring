@@ -2,6 +2,9 @@ package com.example.tasksmanager;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "executors")
 public class Executor {
@@ -15,6 +18,9 @@ public class Executor {
 
     @Column(name = "last_name", nullable = false)
     private String lastName;
+
+    @ManyToMany(mappedBy = "executors")
+    private final Set<Task> tasks = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -38,5 +44,12 @@ public class Executor {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @PreRemove
+    private void removeExecutorsFromTasks() {
+        for (Task task : tasks) {
+            task.getExecutors().remove(this);
+        }
     }
 }

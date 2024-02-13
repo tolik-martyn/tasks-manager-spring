@@ -47,7 +47,7 @@
                     th:text="${executor.firstName + ' ' + executor.lastName}"></li>
                 <li th:if="${#lists.isEmpty(task.executors)}">No Assigned Executor</li>
             </ul>
-            <form action="@{/tasks/${task.id}/add-executor}" method="post">
+            <form th:action="@{'/tasks/' + ${task.id} + '/add-executor'}" method="post">
                 <button type="submit">Add Executor</button>
             </form>
         </td>

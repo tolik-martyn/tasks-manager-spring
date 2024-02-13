@@ -3,6 +3,7 @@ package com.example.tasksmanager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -21,13 +22,15 @@ public class ExecutorServiceImpl implements ExecutorService {
 
     @Override
     public List<Executor> getAllExecutors() {
-        return executorRepository.findAll();
+        List<Executor> executors = executorRepository.findAll();
+        executors.sort(Comparator.comparingLong(Executor::getId));
+        return executors;
     }
 
     @Override
     public Executor getExecutorById(Long executorId) {
         return executorRepository.findById(executorId)
-                .orElseThrow(() -> new RuntimeException("Executor not found"));
+                .orElseThrow(() -> new ExecutorNotFoundException(executorId));
     }
 
     @Override

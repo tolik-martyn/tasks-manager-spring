@@ -29,7 +29,7 @@ public class Task {
             joinColumns = @JoinColumn(name = "task_id"),
             inverseJoinColumns = @JoinColumn(name = "executor_id")
     )
-    private Set<Executor> executors = new HashSet<>();
+    private final Set<Executor> executors = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -65,9 +65,5 @@ public class Task {
 
     public Set<Executor> getExecutors() {
         return executors;
-    }
-
-    public void setExecutors(Set<Executor> executors) {
-        this.executors = executors;
     }
 }
