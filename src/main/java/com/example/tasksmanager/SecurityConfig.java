@@ -28,7 +28,6 @@ public class SecurityConfig {
                                 .requestMatchers("/tasks/*/assign-executor").hasAnyRole("ADMIN", "USER")
                                 .requestMatchers("/tasks/*/update-status").hasAnyRole("ADMIN", "USER")
                                 .requestMatchers("/tasks/*/delete").hasRole("ADMIN")
-                                .requestMatchers("/login/**").permitAll()
                                 .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(httpSecuritySessionManagementConfigurer ->
