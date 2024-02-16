@@ -1,4 +1,4 @@
-package com.example.tasksmanager;
+package com.example.tasksmanager.config;
 
 
 import io.swagger.v3.oas.models.OpenAPI;

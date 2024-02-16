@@ -1,4 +1,6 @@
-package com.example.tasksmanager;
+package com.example.tasksmanager.service;
+
+import com.example.tasksmanager.entity.Executor;
 
 import java.util.List;
 

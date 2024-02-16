@@ -1,5 +1,7 @@
-package com.example.tasksmanager;
+package com.example.tasksmanager.entity;
 
+import com.example.tasksmanager.entity.Executor;
+import com.example.tasksmanager.entity.Task;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;

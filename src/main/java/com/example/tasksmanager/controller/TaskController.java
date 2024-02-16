@@ -1,9 +1,13 @@
-package com.example.tasksmanager;
+package com.example.tasksmanager.controller;
 
+import com.example.tasksmanager.service.TaskService;
+import com.example.tasksmanager.entity.Executor;
+import com.example.tasksmanager.entity.Task;
+import com.example.tasksmanager.entity.TaskStatus;
+import com.example.tasksmanager.service.ExecutorService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.example.tasksmanager;
+package com.example.tasksmanager.exception;
 
 public class ExecutorNotFoundException extends RuntimeException {
     public ExecutorNotFoundException(Long executorId) {
