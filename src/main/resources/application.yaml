@@ -12,3 +12,13 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
     show-sql: true
+
+#JWT token validity in seconds
+jwt:
+  token:
+    validity: 10000
+  secret: secret
+
+logging:
+  level:
+    com.example.tasksmanager.aspect.*: INFO

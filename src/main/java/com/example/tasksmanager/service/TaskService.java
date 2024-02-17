@@ -1,7 +1,7 @@
 package com.example.tasksmanager.service;
 
-import com.example.tasksmanager.entity.Task;
-import com.example.tasksmanager.entity.TaskStatus;
+import com.example.tasksmanager.model.Task;
+import com.example.tasksmanager.model.TaskStatus;
 
 import java.util.List;
 

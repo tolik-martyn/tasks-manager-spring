@@ -1,9 +1,9 @@
 package com.example.tasksmanager.service;
 
-import com.example.tasksmanager.entity.Executor;
+import com.example.tasksmanager.aspect.TrackUserAction;
+import com.example.tasksmanager.model.Executor;
 import com.example.tasksmanager.exception.ExecutorNotFoundException;
 import com.example.tasksmanager.repository.ExecutorRepository;
-import com.example.tasksmanager.service.ExecutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,11 +20,13 @@ public class ExecutorServiceImpl implements ExecutorService {
     }
 
     @Override
+    @TrackUserAction
     public Executor addExecutor(Executor executor) {
         return executorRepository.save(executor);
     }
 
     @Override
+    @TrackUserAction
     public List<Executor> getAllExecutors() {
         List<Executor> executors = executorRepository.findAll();
         executors.sort(Comparator.comparingLong(Executor::getId));
@@ -32,12 +34,14 @@ public class ExecutorServiceImpl implements ExecutorService {
     }
 
     @Override
+    @TrackUserAction
     public Executor getExecutorById(Long executorId) {
         return executorRepository.findById(executorId)
                 .orElseThrow(() -> new ExecutorNotFoundException(executorId));
     }
 
     @Override
+    @TrackUserAction
     public Executor updateExecutor(Long executorId, Executor updatedExecutor) {
         Executor executor = getExecutorById(executorId);
         executor.setFirstName(updatedExecutor.getFirstName());
@@ -46,6 +50,7 @@ public class ExecutorServiceImpl implements ExecutorService {
     }
 
     @Override
+    @TrackUserAction
     public void deleteExecutor(Long executorId) {
         executorRepository.deleteById(executorId);
     }

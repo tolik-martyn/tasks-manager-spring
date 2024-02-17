@@ -1,6 +1,6 @@
 package com.example.tasksmanager.repository;
 
-import com.example.tasksmanager.entity.Executor;
+import com.example.tasksmanager.model.Executor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
