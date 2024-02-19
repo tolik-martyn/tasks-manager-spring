@@ -21,4 +21,5 @@ jwt:
 
 logging:
   level:
-    com.example.tasksmanager.aspect.*: INFO
+    com.example.tasksmanager.aspect.UserActionLoggingAspect: INFO
+    com.example.tasksmanager.aspect.ExceptionHandlingAspect: ERROR
