@@ -30,7 +30,7 @@ public class TaskExecutor {
         this.id = id;
     }
 
-    public Task getTask() {
+    public ITask getTask() {
         return task;
     }
 

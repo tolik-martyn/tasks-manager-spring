@@ -17,12 +17,15 @@ public class UserActionLoggingAspect {
         String methodName = joinPoint.getSignature().getName();
         Object[] args = joinPoint.getArgs();
         StringBuilder params = new StringBuilder();
+
         for (Object arg : args) {
             params.append(arg).append(", ");
         }
+
         if (!params.isEmpty()) {
             params.setLength(params.length() - 2);
         }
+
         String className = joinPoint.getTarget().getClass().getName();
         logger.info("User action - Method: {} in Class: {} with Parameters: {}", methodName, className, params.toString());
     }

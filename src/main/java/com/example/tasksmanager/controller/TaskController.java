@@ -1,8 +1,8 @@
 package com.example.tasksmanager.controller;
 
+import com.example.tasksmanager.model.Task;
 import com.example.tasksmanager.service.TaskService;
 import com.example.tasksmanager.model.Executor;
-import com.example.tasksmanager.model.Task;
 import com.example.tasksmanager.model.TaskStatus;
 import com.example.tasksmanager.service.ExecutorService;
 import io.swagger.v3.oas.annotations.Operation;

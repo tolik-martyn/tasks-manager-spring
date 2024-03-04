@@ -1,9 +1,11 @@
 package com.example.tasksmanager.service;
 
 import com.example.tasksmanager.model.Executor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface ExecutorService {
 
     Executor addExecutor(Executor executor);

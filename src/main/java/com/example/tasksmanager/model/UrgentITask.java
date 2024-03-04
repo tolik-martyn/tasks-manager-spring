@@ -6,9 +6,12 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Класс, представляющий срочную задачу.
+ */
 @Entity
-@Table(name = "tasks")
-public class Task implements ITask {
+@Table(name = "urgent_tasks")
+public class UrgentITask implements ITask {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
