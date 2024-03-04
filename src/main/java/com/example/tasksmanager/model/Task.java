@@ -6,6 +6,9 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Класс, представляющий обычную задачу.
+ */
 @Entity
 @Table(name = "tasks")
 public class Task implements ITask {
