@@ -53,7 +53,7 @@ public class TaskController {
     @Operation(summary = "Show form to add a task", description = "Display the form to add a new task")
     @GetMapping("/add")
     public String showAddTaskForm(Model model) {
-        model.addAttribute("task", new Task());
+        model.addAttribute("task", new Task.Builder().build());
         return "add-task";
     }
 

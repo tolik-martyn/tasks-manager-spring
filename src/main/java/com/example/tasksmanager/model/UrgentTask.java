@@ -11,7 +11,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "urgent_tasks")
-public class UrgentITask implements ITask {
+public class UrgentTask implements ITask {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

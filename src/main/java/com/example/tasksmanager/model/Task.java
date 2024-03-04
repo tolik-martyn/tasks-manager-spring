@@ -17,6 +17,7 @@ public class Task implements ITask {
     @Column(nullable = false, length = 2000)
     private String description;
 
+    @Enumerated(EnumType.STRING)
     private TaskStatus status;
 
     @Column(name = "created_at")
@@ -28,7 +29,18 @@ public class Task implements ITask {
             joinColumns = @JoinColumn(name = "task_id"),
             inverseJoinColumns = @JoinColumn(name = "executor_id")
     )
-    private final Set<Executor> executors = new HashSet<>();
+    private Set<Executor> executors;
+
+    protected Task() {
+        // Default constructor required by JPA
+    }
+
+    private Task(Builder builder) {
+        this.description = builder.description;
+        this.status = builder.status;
+        this.createdAt = builder.createdAt;
+        this.executors = builder.executors;
+    }
 
     @Override
     public Long getId() {
@@ -73,5 +85,40 @@ public class Task implements ITask {
     @Override
     public Set<Executor> getExecutors() {
         return executors;
+    }
+
+    public static class Builder {
+        private String description;
+        private TaskStatus status;
+        private LocalDateTime createdAt;
+        private final Set<Executor> executors;
+
+        public Builder() {
+            this.executors = new HashSet<>();
+        }
+
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder status(TaskStatus status) {
+            this.status = status;
+            return this;
+        }
+
+        public Builder createdAt(LocalDateTime createdAt) {
+            this.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder addExecutor(Executor executor) {
+            this.executors.add(executor);
+            return this;
+        }
+
+        public Task build() {
+            return new Task(this);
+        }
     }
 }

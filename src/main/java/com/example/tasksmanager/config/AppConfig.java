@@ -1,6 +1,6 @@
 package com.example.tasksmanager.config;
 
-import com.example.tasksmanager.model.NormalTaskFactory;
+import com.example.tasksmanager.model.TaskFactory;
 import com.example.tasksmanager.model.UrgentTaskFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +13,7 @@ public class AppConfig {
     }
 
     @Bean
-    public NormalTaskFactory normalTaskFactory() {
-        return new NormalTaskFactory();
+    public TaskFactory normalTaskFactory() {
+        return new TaskFactory();
     }
 }

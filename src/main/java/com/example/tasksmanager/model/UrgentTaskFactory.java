@@ -1,8 +1,8 @@
 package com.example.tasksmanager.model;
 
-public class UrgentTaskFactory implements TaskFactory {
+public class UrgentTaskFactory implements ITaskFactory {
     @Override
     public ITask createTask() {
-        return new UrgentITask();
+        return new UrgentTask();
     }
 }

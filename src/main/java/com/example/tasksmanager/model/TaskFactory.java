@@ -1,5 +1,11 @@
 package com.example.tasksmanager.model;
 
-public interface TaskFactory {
-    ITask createTask();
+/**
+ * Класс, представляющий обычную задачу.
+ */
+public class TaskFactory implements ITaskFactory {
+    @Override
+    public ITask createTask() {
+        return new Task();
+    }
 }
